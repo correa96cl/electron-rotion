@@ -1,7 +1,7 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import * as path from 'node:path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import icon from '../../resources/icon.png'
 
 function createWindow(): void {
   // Create the browser window.
@@ -10,6 +10,12 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
+    backgroundColor: '#17141f',
+    titleBarStyle: 'hiddenInset',
+    trafficLightPosition: {
+      x: 20,
+      y: 20,
+    },
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
@@ -36,7 +42,7 @@ function createWindow(): void {
 }
 
 if (process.platform === 'darwin') {
-  path.resolve(__dirname, '..', '..', 'resources', 'icon.png')
+  app.dock.setIcon(path.resolve(__dirname, '..', '..', 'resources', 'icon.png'))
 }
 
 app.whenReady().then(() => {
