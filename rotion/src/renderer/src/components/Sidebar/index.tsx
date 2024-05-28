@@ -11,18 +11,19 @@ export function Sidebar() {
 
   return (
     <Collapsible.Content className="bg-rotion-800 flex-shrink-0 border-r border-rotion-600 h-screen relative group data-[state=open]:animate-slideIn data-[state=closed]:animate-slideOut overflow-hidden">
-      <Collapsible.Trigger
-        className={clsx(
-          'absolute h-5 w-5 right-4 text-rotion-200 hover:text-rotion-50 inline-flex items-center justify-center',
-          {
-            'top-[1.125rem]': isMacOS,
-            'top-6': !isMacOS,
-          },
-        )}
-      >
-        <CaretDoubleLeft className="h-4 w-4" />
-      </Collapsible.Trigger>
-
+      <div className="flex w-full justify-end pr-4">
+        <Collapsible.Trigger
+          className={clsx(
+            'h-5 w-5 right-4 text-rotion-200 hover:text-rotion-50 inline-flex items-center justify-center',
+            {
+              'mt-[1.125rem]': isMacOS,
+              'mt-6': !isMacOS,
+            },
+          )}
+        >
+          <CaretDoubleLeft className="h-4 w-4" />
+        </Collapsible.Trigger>
+      </div>
       <div
         className={clsx('region-drag h-14', {
           block: isMacOS,

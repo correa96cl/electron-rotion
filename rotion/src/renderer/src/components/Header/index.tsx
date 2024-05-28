@@ -22,10 +22,13 @@ export function Header({ isSidebarOpen }: HeaderProps) {
       )}
     >
       <Collapsible.Trigger
-        className={clsx('h-5 w-5 text-rotion-200 hover:text-rotion-50', {
-          hidden: isSidebarOpen,
-          block: !isSidebarOpen,
-        })}
+        className={clsx(
+          'h-5 w-5 text-rotion-200 hover:text-rotion-50 region-no-drag',
+          {
+            hidden: isSidebarOpen,
+            block: !isSidebarOpen,
+          },
+        )}
       >
         <CaretDoubleRight className="h-4 w-4" />
       </Collapsible.Trigger>
