@@ -5,9 +5,19 @@ import { CaretDoubleLeft } from 'phosphor-react'
 import { CreatePage } from './CreatePage'
 import { Profile } from './Profile'
 import { Search } from './Search'
+import { useQuery } from '@tanstack/react-query'
 
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
+
+  const { data } = useQuery(
+    { queryKey: ['documents'], queryFn: () => [] },
+    async () => {
+      const response = window.api.fetchDocuments()
+
+      return response
+    },
+  )
 
   return (
     <Collapsible.Content className="bg-rotion-800 flex-shrink-0 border-r border-rotion-600 h-screen relative group data-[state=open]:animate-slideIn data-[state=closed]:animate-slideOut overflow-hidden">
@@ -46,6 +56,13 @@ export function Sidebar() {
           <Navigation.Section>
             <Navigation.SectionTitle>Workspace</Navigation.SectionTitle>
             <Navigation.SectionContent>
+              {data?.map((document) => {
+                return (
+                  <Navigation.Link key={document.id}>
+                    {document.title}
+                  </Navigation.Link>
+                )
+              })}
               <Navigation.Link>Untitled</Navigation.Link>
               <Navigation.Link>Discover</Navigation.Link>
               <Navigation.Link>Ignite</Navigation.Link>
