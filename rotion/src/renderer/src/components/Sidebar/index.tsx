@@ -63,10 +63,6 @@ export function Sidebar() {
                   </Navigation.Link>
                 )
               })}
-              <Navigation.Link>Untitled</Navigation.Link>
-              <Navigation.Link>Discover</Navigation.Link>
-              <Navigation.Link>Ignite</Navigation.Link>
-              <Navigation.Link>Rocketseat</Navigation.Link>
             </Navigation.SectionContent>
           </Navigation.Section>
         </Navigation.Root>

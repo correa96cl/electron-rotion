@@ -1,7 +1,7 @@
 export interface Document {
   id: string
   title: string
-  content: string
+  content?: string
 }
 
 export type SaveDocumentRequest = Document
